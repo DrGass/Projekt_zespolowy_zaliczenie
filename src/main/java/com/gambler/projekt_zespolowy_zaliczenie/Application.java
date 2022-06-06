@@ -2,7 +2,6 @@ package com.gambler.projekt_zespolowy_zaliczenie;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -15,13 +14,15 @@ import java.util.Scanner;
 
 public class Application extends javafx.application.Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Simulator trading!");
         stage.setScene(scene);
         stage.show();
     }
+
+
     public static void main(String[] args) throws FileNotFoundException {
         try {
             Scrapper.main();
@@ -37,7 +38,6 @@ public class Application extends javafx.application.Application {
             String nowalinia = input.nextLine();
             List<String> temp = Arrays.asList(nowalinia.split(";"));
             btcData.add(temp);
-
         }
 
         btcData.remove(0);
@@ -54,7 +54,6 @@ public class Application extends javafx.application.Application {
             String nowalinia = input.nextLine();
             List<String> temp = Arrays.asList(nowalinia.split(";"));
             ethData.add(temp);
-
         }
 
         ethData.remove(0);
@@ -71,7 +70,6 @@ public class Application extends javafx.application.Application {
             String nowalinia = input.nextLine();
             List<String> temp = Arrays.asList(nowalinia.split(";"));
             liteData.add(temp);
-
         }
         liteData.remove(0);
         liteData.remove(1);
@@ -87,7 +85,6 @@ public class Application extends javafx.application.Application {
             String nowalinia = input.nextLine();
             List<String> temp = Arrays.asList(nowalinia.split(";"));
             xrpData.add(temp);
-
         }
         xrpData.remove(0);
         xrpData.remove(1);
