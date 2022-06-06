@@ -2,6 +2,7 @@ package com.gambler.projekt_zespolowy_zaliczenie;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -21,8 +22,6 @@ public class Application extends javafx.application.Application {
         stage.setScene(scene);
         stage.show();
     }
-
-
     public static void main(String[] args) throws FileNotFoundException {
         try {
             Scrapper.main();

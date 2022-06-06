@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gambler.projekt_zespolowy_zaliczenie.Controller">
    <children>
       <GridPane layoutX="26.0" layoutY="56.0" prefHeight="161.0" prefWidth="292.0">
         <columnConstraints>
@@ -66,13 +66,13 @@
             </LineChart>
          </children>
       </GridPane>
-      <Button layoutX="218.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Wypłata" />
-       <Button fx:id="StartButton" layoutX="135.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Start" />
-       <Button layoutX="68.0" layoutY="353.0" mnemonicParsing="false" text="Inwestuj" />
-      <CheckBox layoutX="342.0" layoutY="66.0" mnemonicParsing="false" />
-      <CheckBox layoutX="342.0" layoutY="114.0" mnemonicParsing="false" />
-      <CheckBox layoutX="342.0" layoutY="148.0" mnemonicParsing="false" />
-      <CheckBox layoutX="342.0" layoutY="190.0" mnemonicParsing="false" />
+      <Button fx:id="wyplata" layoutX="218.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Wypłata" />
+       <Button fx:id="start" layoutX="135.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Start" />
+       <Button fx:id="inwestuj" layoutX="68.0" layoutY="353.0" mnemonicParsing="false" text="Inwestuj" />
+      <CheckBox fx:id="idCryptocurrency_BTC" layoutX="342.0" layoutY="66.0" mnemonicParsing="false" onAction="#changeBTC" />
+      <CheckBox fx:id="idCryptocurrency_ETH" layoutX="342.0" layoutY="114.0" mnemonicParsing="false" onAction="#changeETH" />
+      <CheckBox fx:id="idCryptocurrency_XRP" layoutX="342.0" layoutY="148.0" mnemonicParsing="false" onAction="#changeXRP" />
+      <CheckBox fx:id="idCryptocurrency_Litecoin" layoutX="342.0" layoutY="190.0" mnemonicParsing="false" onAction="#changeLitecoin" />
       <MenuBar layoutY="-2.0" prefHeight="26.0" prefWidth="864.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
