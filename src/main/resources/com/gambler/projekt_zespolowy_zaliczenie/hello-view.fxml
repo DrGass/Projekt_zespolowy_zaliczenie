@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="26.0" layoutY="56.0" prefHeight="161.0" prefWidth="292.0">
         <columnConstraints>
@@ -26,7 +26,7 @@
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="BTC" />
             <Label text="ETH" GridPane.rowIndex="1" />
-            <Label text="Ripple XRP" GridPane.rowIndex="2" />
+            <Label text="XRP" GridPane.rowIndex="2" />
             <Label text="Litecoin" GridPane.rowIndex="3" />
             <TextField prefHeight="0.0" prefWidth="98.0" GridPane.columnIndex="2" />
             <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
@@ -67,7 +67,8 @@
          </children>
       </GridPane>
       <Button layoutX="218.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Wypłata" />
-    <Button layoutX="68.0" layoutY="353.0" mnemonicParsing="false" text="Inwestuj" />
+       <Button fx:id="StartButton" layoutX="135.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Start" />
+       <Button layoutX="68.0" layoutY="353.0" mnemonicParsing="false" text="Inwestuj" />
       <CheckBox layoutX="342.0" layoutY="66.0" mnemonicParsing="false" />
       <CheckBox layoutX="342.0" layoutY="114.0" mnemonicParsing="false" />
       <CheckBox layoutX="342.0" layoutY="148.0" mnemonicParsing="false" />
