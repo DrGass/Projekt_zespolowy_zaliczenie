@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Controller extends Application {
+    int statusLine = 0;
     CategoryAxis xAxis = new CategoryAxis();
     NumberAxis yAxis = new NumberAxis();
     XYChart.Series series1 = new XYChart.Series();
@@ -31,6 +32,12 @@ public class Controller extends Application {
 
     @FXML
     private LineChart<String, Number> lBarChart = new LineChart<String, Number>(xAxis, yAxis);
+    @FXML
+    private LineChart<String, Number> lBarChartETH = new LineChart<String, Number>(xAxis, yAxis);
+    @FXML
+    private LineChart<String, Number> lBarChartXRP = new LineChart<String, Number>(xAxis, yAxis);
+    @FXML
+    private LineChart<String, Number> lBarChartLC = new LineChart<String, Number>(xAxis, yAxis);
     @FXML
     private TextField BTCValue;
     @FXML
@@ -65,6 +72,12 @@ public class Controller extends Application {
     private Label ErrorLog;
     @FXML
     private Button StartButton;
+    @FXML
+    private Button btnPrev;
+    @FXML
+    private Button btnNext;
+    @FXML
+    private Label labelStatus;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -91,7 +104,7 @@ public class Controller extends Application {
         }
         else {
             StartButton.setText("Start");
-
+            AlertBox.display("Koniec inwestycji. ","Twoje saldo końcowe: " + CurrentMoney.getText());
             StartMoney.setDisable(false);
             StartMoney.setText("");
         }
@@ -183,10 +196,7 @@ public class Controller extends Application {
         System.out.println("ssss");
         System.out.println(bTCCashin);
         bTCCashin*=change;
-        System.out.println(ftmp1);
-        System.out.println(ftmp2);
-        System.out.println(change);
-        System.out.println(bTCCashin);
+
 
         tmp=ethData.get(eTHCurrentStep);
         ftmp1=Float.parseFloat(tmp.get(2).toString().replaceAll(",",""));
@@ -273,19 +283,61 @@ public class Controller extends Application {
         xAxis.setAutoRanging(false);
         xAxis.setTickLabelsVisible(false);
         xAxis.setTickMarkVisible(false);
-        lBarChart.getData().addAll(series1,series2,series3,series4);
-        /*lBarChart.getData().removeAll(series1,series2,series3,series4);
-        if(BTCCB.isSelected()){
-            lBarChart.getData().addAll(series1);
+        /*lBarChart.getData().addAll(series1,series2,series3,series4);*/
+        lBarChart.getData().add(series1);
+        lBarChartETH.getData().add(series2);
+        lBarChartXRP.getData().add(series3);
+        lBarChartLC.getData().add(series4);
+
+    }
+
+    @FXML
+    protected void onbtnNext(){
+        ChangeScene("next");
+    }
+
+    @FXML
+    protected void onbtnPrev(){
+        ChangeScene("prev");
+    }
+
+    protected void ChangeScene(String status){
+        if(status == "prev" && statusLine>0) statusLine--;
+        else if( status == "next" && statusLine<3) statusLine++;
+
+        switch (statusLine){
+            case 0:
+                lBarChart.setVisible(true);
+                lBarChartETH.setVisible(false);
+                lBarChartXRP.setVisible(false);
+                lBarChartLC.setVisible(false);
+                btnPrev.setDisable(true);
+                labelStatus.setText("BTC");
+                break;
+            case 1:
+                lBarChart.setVisible(false);
+                lBarChartETH.setVisible(true);
+                lBarChartXRP.setVisible(false);
+                lBarChartLC.setVisible(false);
+                btnPrev.setDisable(false);
+                labelStatus.setText("ETH");
+                break;
+            case 2:
+                lBarChart.setVisible(false);
+                lBarChartETH.setVisible(false);
+                lBarChartXRP.setVisible(true);
+                lBarChartLC.setVisible(false);
+                btnNext.setDisable(false);
+                labelStatus.setText("XRP");
+                break;
+            case 3:
+                lBarChart.setVisible(false);
+                lBarChartETH.setVisible(false);
+                lBarChartXRP.setVisible(false);
+                lBarChartLC.setVisible(true);
+                btnNext.setDisable(true);
+                labelStatus.setText("LiteCoin");
+                break;
         }
-        else if(ETHCB.isSelected()){
-            lBarChart.getData().addAll(series2);
-        }
-        else if(XRPCB.isSelected()){
-            lBarChart.getData().addAll(series3);
-        }
-        else if(LitecoinCB.isSelected()){
-            lBarChart.getData().addAll(series4);
-        }*/
     }
 }
