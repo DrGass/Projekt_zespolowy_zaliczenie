@@ -13,15 +13,26 @@ import org.jsoup.select.Elements;
 
 public class Scrapper{
 
+    public static String updateLink(String currency){
+        String start = currency.substring(0,currency.indexOf("=")+1 );
+        String end = currency.substring(currency.indexOf("&"));
+        currency = start + java.time.LocalDate.now() + end;
+        return currency;
+    }
+
     public static void main() throws IOException{
         String [] currencies = {
-                "https://www.coingecko.com/en/coins/bitcoin/historical_data?end_date=2022-06-05&start_date=2022-04-06",
-                "https://www.coingecko.com/en/coins/ethereum/historical_data?end_date=2022-06-05&start_date=2022-04-06",
-                "https://www.coingecko.com/en/coins/xrp/historical_data?end_date=2022-06-05&start_date=2022-04-06",
-                "https://www.coingecko.com/en/coins/litecoin/historical_data?end_date=2022-06-04&start_date=2022-04-06"};
+                "https://www.coingecko.com/en/coins/bitcoin/historical_data?end_date=&start_date=2022-04-06",
+                "https://www.coingecko.com/en/coins/ethereum/historical_data?end_date=&start_date=2022-04-06",
+                "https://www.coingecko.com/en/coins/xrp/historical_data?end_date=&start_date=2022-04-06",
+                "https://www.coingecko.com/en/coins/litecoin/historical_data?end_date=&start_date=2022-04-06"};
+
 
         for (String page : currencies)
         {
+            page = updateLink(page);
+            System.out.println("Scraping: " + page);
+
             Document doc = Jsoup.connect(page).get();
             Elements table = doc.getElementsByTag("tr");
 //            System.out.println("Table tr elements: " + table.select("tr").size());
@@ -43,5 +54,6 @@ public class Scrapper{
             }
             out.close();
         }
+        System.out.println("Scraped websites successfully");
     }
 }
