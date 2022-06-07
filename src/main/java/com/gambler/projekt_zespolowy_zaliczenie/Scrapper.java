@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,13 +31,13 @@ public class Scrapper{
                 "https://www.coingecko.com/en/coins/xrp/historical_data?end_date=&start_date=2022-04-06",
                 "https://www.coingecko.com/en/coins/litecoin/historical_data?end_date=&start_date=2022-04-06"};
 
-
         for (String page : currencies)
         {
             page = updateLink(page);
             System.out.println("Scraping: " + page);
 
             Document doc = Jsoup.connect(page).get();
+
             Elements table = doc.getElementsByTag("tr");
 //            System.out.println("Table tr elements: " + table.select("tr").size());
             String currency = page.substring(35);
